@@ -1,6 +1,6 @@
 function App() {
   return (
-      <p>learn react</p>
+      <p>player 2 wins</p>
   );
 }
 
