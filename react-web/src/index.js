@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Game from 'rps';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App game={new Game()}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
