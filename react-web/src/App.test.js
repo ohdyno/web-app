@@ -24,3 +24,15 @@ test('when player 1 wins, display player 1 wins', () => {
 
     expect(screen.getByText(/player 1 wins/i)).toBeInTheDocument();
 });
+
+test('when it is a tie, display tie', () => {
+    let tieStub = {
+        playRound(player1Choice, player2Choice, ui) {
+            ui.tie();
+        }
+    };
+
+    render(<App game={tieStub}/>);
+
+    expect(screen.getByText(/tie/i)).toBeInTheDocument();
+});

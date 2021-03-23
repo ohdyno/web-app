@@ -11,6 +11,10 @@ function App({game}) {
 
             player1Wins() {
                 setResult("player 1 wins");
+            },
+
+            tie() {
+                setResult("tie");
             }
         })
     })
