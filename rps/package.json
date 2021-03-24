@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "watch": "jest --watch"
+    "watch": "jest --watch --reporters=default --reporters=../jest-audio-reporter/index.js"
   },
   "keywords": [],
   "author": "",
