@@ -22,6 +22,12 @@ describe('player 1 wins scenarios', () => {
 
         expect(uiSpy.player1Wins).toBeCalled();
     })
+
+    test('paper vs rock', () => {
+        game.playRound('paper', 'rock', uiSpy)
+
+        expect(uiSpy.player1Wins).toBeCalled();
+    })
 })
 
 describe('player 2 wins scenarios', () => {
@@ -41,6 +47,12 @@ describe('player 2 wins scenarios', () => {
 
     test('rock vs paper', () => {
         game.playRound('rock', 'paper', uiSpy)
+
+        expect(uiSpy.player2Wins).toBeCalled();
+    })
+
+    test('paper vs scissors', () => {
+        game.playRound('paper', 'scissors', uiSpy)
 
         expect(uiSpy.player2Wins).toBeCalled();
     })
