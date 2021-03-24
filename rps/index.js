@@ -1,5 +1,10 @@
 module.exports = class {
     playRound(player1Choice, player2Choice, ui) {
+        if (player1Choice === player2Choice) {
+            ui.tie();
+            return;
+        }
+
         if (this.player1Wins(player1Choice, player2Choice)) {
             ui.player1Wins();
             return;

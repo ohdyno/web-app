@@ -57,3 +57,31 @@ describe('player 2 wins scenarios', () => {
         expect(uiSpy.player2Wins).toBeCalled();
     })
 })
+
+describe('tie scenarios', () => {
+    let uiSpy;
+
+    beforeEach(() => {
+        uiSpy = {
+            tie: jest.fn()
+        };
+    })
+
+    test('rock vs rock', () => {
+        game.playRound('rock', 'rock', uiSpy)
+
+        expect(uiSpy.tie).toBeCalled();
+    })
+
+    test('paper vs paper', () => {
+        game.playRound('paper', 'paper', uiSpy)
+
+        expect(uiSpy.tie).toBeCalled();
+    })
+
+    test('scissors vs scissors', () => {
+        game.playRound('scissors', 'scissors', uiSpy)
+
+        expect(uiSpy.tie).toBeCalled();
+    })
+})
