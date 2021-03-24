@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/jest-audio-reporter/jest-audio-reporter.iml" filepath="$PROJECT_DIR$/jest-audio-reporter/jest-audio-reporter.iml" />
       <module fileurl="file://$PROJECT_DIR$/react-web/react-web.iml" filepath="$PROJECT_DIR$/react-web/react-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/rps/rps.iml" filepath="$PROJECT_DIR$/rps/rps.iml" />
     </modules>

@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-notify": "react-scripts test --reporters=default --reporters=./notify.js",
+    "test-notify": "react-scripts test --reporters=default --reporters=../jest-audio-reporter/index.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
