@@ -1,34 +1,41 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 function App({game}) {
-    let [result, setResult] = useState("");
-    let [choices, setChoices] = useState({
+    const [round, setRound] = useState({
         player1: '',
-        player2: ''
-    });
+        player2: '',
+        result: ''
+    })
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        game.playRound(choices.player1, choices.player2, {
-            player2Wins() {
-                setResult("player 2 wins");
-            },
-
-            player1Wins() {
-                setResult("player 1 wins");
-            },
-
-            tie() {
-                setResult("tie");
-            }
-        });
+    function updateResult(result) {
+        setRound({
+            ...round,
+            result: result
+        })
     }
 
     function updateChoice(newChoice) {
-        setChoices({
-            ...choices,
+        setRound({
+            ...round,
             ...newChoice
         })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        game.playRound(round.player1, round.player2, {
+            player2Wins() {
+                updateResult("player 2 wins");
+            },
+
+            player1Wins() {
+                updateResult("player 1 wins");
+            },
+
+            tie() {
+                updateResult("tie");
+            }
+        });
     }
 
     return (
@@ -37,16 +44,16 @@ function App({game}) {
                 <label htmlFor={'player-one-choice'}>
                     Player 1
                 </label>
-                <input id={'player-one-choice'} type="text" value={choices.player1} onChange={event => updateChoice({player1: event.target.value})}/>
+                <input id={'player-one-choice'} type="text" value={round.player1} onChange={event => updateChoice({player1: event.target.value})}/>
 
                 <label htmlFor={'player-two-choice'}>
                     Player 2
                 </label>
-                <input id={'player-two-choice'} type="text" value={choices.player2} onChange={event => updateChoice({player2: event.target.value})}/>
+                <input id={'player-two-choice'} type="text" value={round.player2} onChange={event => updateChoice({player2: event.target.value})}/>
 
                 <input type="submit" value="Play"/>
             </form>
-            <p>{result}</p>
+            <p>{JSON.stringify(round)}</p>
         </div>
     );
 }
