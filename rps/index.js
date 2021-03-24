@@ -9,7 +9,7 @@ module.exports = class {
     }
 
     player1Wins(player1Choice, player2Choice) {
-        return player1Choice === 'rock' ||
+        return player1Choice === 'rock' && player2Choice === 'scissors'||
             player1Choice === 'scissors' && player2Choice === 'paper';
     }
 }

@@ -22,12 +22,24 @@ describe('player 1 wins scenarios', () => {
     })
 })
 
-test('scissors vs rock results in player 2 wins', () => {
-    const uiSpy = {
-        player2Wins: jest.fn()
-    };
+describe('player 2 wins scenarios', () => {
+    test('scissors vs rock', () => {
+        const uiSpy = {
+            player2Wins: jest.fn()
+        };
 
-    new Game().playRound('scissors', 'rock', uiSpy)
+        new Game().playRound('scissors', 'rock', uiSpy)
 
-    expect(uiSpy.player2Wins).toBeCalled();
+        expect(uiSpy.player2Wins).toBeCalled();
+    })
+
+    test('rock vs paper', () => {
+        const uiSpy = {
+            player2Wins: jest.fn()
+        };
+
+        new Game().playRound('rock', 'paper', uiSpy)
+
+        expect(uiSpy.player2Wins).toBeCalled();
+    })
 })
