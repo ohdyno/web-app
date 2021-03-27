@@ -1,6 +1,24 @@
 module.exports = class {
     playRound(player1Choice, player2Choice, ui) {
-        if (player1Choice === player2Choice) {
+        function isInvalid() {
+            function isValid(choice) {
+                const validChoices = ['rock', 'paper', 'scissors'];
+                return validChoices.includes(choice);
+            }
+
+            return !isValid(player1Choice) || !isValid(player2Choice);
+        }
+
+        if (isInvalid()) {
+            ui.invalid();
+            return;
+        }
+
+        function tie() {
+            return player1Choice === player2Choice;
+        }
+
+        if (tie()) {
             ui.tie();
             return;
         }
@@ -14,7 +32,7 @@ module.exports = class {
     }
 
     player1Wins(player1Choice, player2Choice) {
-        return player1Choice === 'rock' && player2Choice === 'scissors'||
+        return player1Choice === 'rock' && player2Choice === 'scissors' ||
             player1Choice === 'scissors' && player2Choice === 'paper' ||
             player1Choice === 'paper' && player2Choice === 'rock';
     }

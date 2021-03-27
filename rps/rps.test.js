@@ -85,3 +85,26 @@ describe('tie scenarios', () => {
         expect(uiSpy.tie).toBeCalled();
     })
 })
+
+describe('edge case inputs', () => {
+    let uiSpy;
+
+    beforeEach(() => {
+        uiSpy = {
+            invalid: jest.fn()
+        };
+    })
+
+    test('invalid player 1 choice', () => {
+        game.playRound('sailboat', 'rock', uiSpy)
+
+        expect(uiSpy.invalid).toBeCalled();
+    })
+
+    test('invalid player 2 choice', () => {
+        game.playRound('rock', 'sailboat', uiSpy)
+
+        expect(uiSpy.invalid).toBeCalled();
+    })
+
+})
