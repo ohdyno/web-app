@@ -86,25 +86,36 @@ describe('tie scenarios', () => {
     })
 })
 
-describe('edge case inputs', () => {
-    let uiSpy;
+describe('edge case choices', () => {
+    describe('invalid choices', () => {
+        let uiSpy;
 
-    beforeEach(() => {
-        uiSpy = {
-            invalid: jest.fn()
+        beforeEach(() => {
+            uiSpy = {
+                invalid: jest.fn()
+            };
+        })
+
+        test('invalid player 1 choice', () => {
+            game.playRound('sailboat', 'rock', uiSpy)
+
+            expect(uiSpy.invalid).toBeCalled();
+        })
+
+        test('invalid player 2 choice', () => {
+            game.playRound('rock', 'sailboat', uiSpy)
+
+            expect(uiSpy.invalid).toBeCalled();
+        })
+    })
+
+    test('different cases', () => {
+        const uiSpy = {
+            player2Wins: jest.fn()
         };
+
+        game.playRound('Rock', 'paPer', uiSpy)
+
+        expect(uiSpy.player2Wins).toBeCalled();
     })
-
-    test('invalid player 1 choice', () => {
-        game.playRound('sailboat', 'rock', uiSpy)
-
-        expect(uiSpy.invalid).toBeCalled();
-    })
-
-    test('invalid player 2 choice', () => {
-        game.playRound('rock', 'sailboat', uiSpy)
-
-        expect(uiSpy.invalid).toBeCalled();
-    })
-
 })
