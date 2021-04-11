@@ -38,7 +38,24 @@ function playRound(player1Choice, player2Choice, ui) {
 
 module.exports = class {
     playRound(player1Choice, player2Choice, ui) {
-        playRound(player1Choice.toLowerCase(), player2Choice.toLowerCase(), ui);
+        const playRoundResultRecorder = {
+            player1Wins() {
+                ui.player1Wins();
+            },
+
+            player2Wins() {
+                ui.player2Wins();
+            },
+
+            invalid() {
+                ui.invalid();
+            },
+
+            tie() {
+                ui.tie();
+            }
+        };
+        playRound(player1Choice.toLowerCase(), player2Choice.toLowerCase(), playRoundResultRecorder);
     }
 
     history(ui) {
