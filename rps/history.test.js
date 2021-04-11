@@ -1,4 +1,5 @@
 const Game = require('./index');
+const {PlayRoundSpy} = require("./test-doubles");
 
 const game = new Game();
 
@@ -15,11 +16,10 @@ describe('game history', () => {
         const uiSpy = {
             roundsPlayed: jest.fn()
         };
-        game.playRound('rock', 'paper', {
-            player2Wins() {
-            }
-        })
+        game.playRound('rock', 'paper', new PlayRoundSpy())
+
         game.history(uiSpy);
+
         expect(uiSpy.roundsPlayed).toBeCalledWith([
             {player1: 'rock', player2: 'paper', result: 'player 2 wins'}
         ]);
