@@ -25,4 +25,22 @@ describe('game history', () => {
             {player1: 'rock', player2: 'paper', result: 'player 2 wins'}
         ]);
     })
+
+    it('reports all rounds that have been played', () => {
+        game.playRound('rock', 'paper', new PlayRoundUISpy())
+        game.playRound('paper', 'rock', new PlayRoundUISpy())
+        game.playRound('ROCK', 'paper', new PlayRoundUISpy())
+        game.playRound('rock', 'sailboat', new PlayRoundUISpy())
+        game.playRound('rock', 'rock', new PlayRoundUISpy())
+
+        game.history(uiSpy);
+
+        expect(uiSpy.roundsPlayed).toBeCalledWith([
+            {player1: 'rock', player2: 'paper', result: 'player 2 wins'},
+            {player1: 'paper', player2: 'rock', result: 'player 1 wins'},
+            {player1: 'ROCK', player2: 'paper', result: 'player 2 wins'},
+            {player1: 'rock', player2: 'sailboat', result: 'invalid'},
+            {player1: 'rock', player2: 'rock', result: 'tie'},
+        ]);
+    })
 })
