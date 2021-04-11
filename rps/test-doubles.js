@@ -5,6 +5,12 @@ function PlayRoundSpy() {
     this.invalid = jest.fn();
 }
 
+function HistoryUISpy() {
+    this.noHistory = jest.fn();
+    this.roundsPlayed = jest.fn();
+}
+
 module.exports = {
-    PlayRoundSpy
+    PlayRoundSpy,
+    HistoryUISpy,
 }
