@@ -44,42 +44,35 @@ module.exports = class {
     playRound(player1Choice, player2Choice, ui) {
         const roundsRepository = this.roundsRepository;
         const playRoundResultRecorder = {
-            player1Wins() {
-                ui.player1Wins();
+            recordResult(result) {
                 roundsRepository.push({
                     player1: player1Choice,
                     player2: player2Choice,
-                    result: 'player 1 wins'
+                    result: result
                 })
+            },
+
+            player1Wins() {
+                ui.player1Wins();
+                this.recordResult('player 1 wins');
             },
 
             player2Wins() {
                 ui.player2Wins();
-                roundsRepository.push({
-                    player1: player1Choice,
-                    player2: player2Choice,
-                    result: 'player 2 wins'
-                })
+                this.recordResult('player 2 wins');
             },
 
             invalid() {
                 ui.invalid();
-                roundsRepository.push({
-                    player1: player1Choice,
-                    player2: player2Choice,
-                    result: 'invalid'
-                })
+                this.recordResult('invalid');
             },
 
             tie() {
                 ui.tie();
-                roundsRepository.push({
-                    player1: player1Choice,
-                    player2: player2Choice,
-                    result: 'tie'
-                })
+                this.recordResult('tie');
             }
         };
+
         playRound(player1Choice.toLowerCase(), player2Choice.toLowerCase(), playRoundResultRecorder);
     }
 
