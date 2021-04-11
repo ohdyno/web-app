@@ -40,4 +40,8 @@ module.exports = class {
     playRound(player1Choice, player2Choice, ui) {
         playRound(player1Choice.toLowerCase(), player2Choice.toLowerCase(), ui);
     }
+
+    history(ui) {
+        ui.noHistory();
+    }
 }
