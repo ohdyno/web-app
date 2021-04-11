@@ -1,4 +1,4 @@
-function PlayRoundSpy() {
+function PlayRoundUISpy() {
     this.player1Wins = jest.fn();
     this.player2Wins = jest.fn();
     this.tie = jest.fn();
@@ -11,6 +11,6 @@ function HistoryUISpy() {
 }
 
 module.exports = {
-    PlayRoundSpy,
+    PlayRoundUISpy,
     HistoryUISpy,
 }

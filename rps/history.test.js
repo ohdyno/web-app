@@ -1,5 +1,5 @@
 const Game = require('./index');
-const {PlayRoundSpy, HistoryUISpy} = require("./test-doubles");
+const {PlayRoundUISpy, HistoryUISpy} = require("./test-doubles");
 
 const game = new Game();
 
@@ -16,7 +16,7 @@ describe('game history', () => {
     })
 
     it('reports player choices and result when one round has been played', () => {
-        game.playRound('rock', 'paper', new PlayRoundSpy())
+        game.playRound('rock', 'paper', new PlayRoundUISpy())
 
         game.history(uiSpy);
 

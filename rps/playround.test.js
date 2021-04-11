@@ -1,5 +1,5 @@
 const Game = require('./index');
-const {PlayRoundSpy} = require('./test-doubles')
+const {PlayRoundUISpy} = require('./test-doubles')
 
 const game = new Game();
 
@@ -7,7 +7,7 @@ describe('play rounds', () => {
     let uiSpy;
 
     beforeEach(() => {
-        uiSpy = new PlayRoundSpy();
+        uiSpy = new PlayRoundUISpy();
     })
 
     describe('player 1 wins scenarios', () => {
