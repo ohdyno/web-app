@@ -39,8 +39,8 @@ function playRound(player1Choice, player2Choice, ui) {
 module.exports = class {
     roundsRepository;
 
-    constructor() {
-        this.roundsRepository = [];
+    constructor(roundsRepository) {
+        this.roundsRepository = roundsRepository;
     }
 
     playRound(player1Choice, player2Choice, ui) {

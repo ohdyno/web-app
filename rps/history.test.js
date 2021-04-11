@@ -1,13 +1,14 @@
 const Game = require('./index');
 const {PlayRoundUISpy, HistoryUISpy} = require("./test-doubles");
 
-const game = new Game();
 
 describe('game history', () => {
     let uiSpy;
+    let game;
 
     beforeEach(() => {
         uiSpy = new HistoryUISpy();
+        game = new Game([]);
     })
 
     it('reports no history when no rounds have been played', () => {

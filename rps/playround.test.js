@@ -1,7 +1,7 @@
 const Game = require('./index');
 const {PlayRoundUISpy} = require('./test-doubles')
 
-const game = new Game();
+const game = new Game([]);
 
 describe('play rounds', () => {
     let uiSpy;
