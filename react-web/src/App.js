@@ -34,6 +34,10 @@ function App({game}) {
 
             tie() {
                 updateResult("tie");
+            },
+
+            invalid() {
+                updateResult("invalid");
             }
         });
     }

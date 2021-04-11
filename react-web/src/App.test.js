@@ -44,6 +44,20 @@ test('when it is a tie, display tie', () => {
     expect(screen.getByText(/tie/i)).toBeInTheDocument();
 });
 
+test('when it is invalid, display invalid', () => {
+    let invalidStub = {
+        playRound(player1Choice, player2Choice, ui) {
+            ui.invalid();
+        }
+    };
+
+    render(<App game={invalidStub}/>);
+
+    userEvent.click(screen.getByDisplayValue(/play/i));
+
+    expect(screen.getByText(/invalid/i)).toBeInTheDocument();
+});
+
 test('when user clicks play, send player 1 choice and player 2 choice to the game', () => {
     let gameSpy = {
         playRound: jest.fn()
