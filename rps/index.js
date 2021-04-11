@@ -37,7 +37,14 @@ function playRound(player1Choice, player2Choice, ui) {
 }
 
 module.exports = class {
+    roundsRepository;
+
+    constructor() {
+        this.roundsRepository = [];
+    }
+
     playRound(player1Choice, player2Choice, ui) {
+        const roundsRepository = this.roundsRepository;
         const playRoundResultRecorder = {
             player1Wins() {
                 ui.player1Wins();
@@ -45,6 +52,11 @@ module.exports = class {
 
             player2Wins() {
                 ui.player2Wins();
+                roundsRepository.push({
+                    player1: player1Choice,
+                    player2: player2Choice,
+                    result: 'player 2 wins'
+                })
             },
 
             invalid() {
@@ -59,6 +71,10 @@ module.exports = class {
     }
 
     history(ui) {
-        ui.noHistory();
+        if (this.roundsRepository.length === 0) {
+            ui.noHistory();
+        } else {
+            ui.roundsPlayed(this.roundsRepository);
+        }
     }
 }
