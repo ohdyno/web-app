@@ -6,7 +6,7 @@ import Game from 'rps';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App game={new Game()}/>
+    <App game={new Game([])}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
